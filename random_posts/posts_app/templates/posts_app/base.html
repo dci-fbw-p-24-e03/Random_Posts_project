@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/styles.css'%}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Random Posts</title>
+</head>
+<body>
+    <header>
+        <h3 class="random-posts-header" >RANDOM POSTS</h3>
+        <nav>
+            <ul>
+            <li><a href="{%url 'home'%}">Home</a></li>
+            <li><a href="{%url 'users-list'%}">Users</a></li>
+            <li><a href="{%url 'posts-list'%}">Posts</a></li>
+            </ul>
+        </nav>
+           
+    </header>
+    <main>
+        {%block content%}
+
+        {%endblock%}
+    </main>
+    <footer>
+        <div>
+            <img src="{% static 'assets/post.jpeg'%}" alt="static post" height="50" width="50">
+        </div>
+        <div>&copy; 2024 Random Posts app</div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,297 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-left: 20%;
+    padding-right: 20%;
+    background: linear-gradient(to right,#f5f7fa,#c3cfc5);
+    min-height: 100vh;
+}
+h1 ,h2 {
+    text-align: center;
+}
+header {
+    background-color: #343a40; 
+    color : #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 1.5em; 
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex; 
+    justify-content: center; 
+    gap: 15px; 
+}
+
+nav ul li {
+    padding: 10px 15px; 
+}
+
+nav ul li a {
+    color: #fff;
+    font-size: 1em;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin: 4px;
+    padding: 8px;
+    border-radius: 15%;
+}
+
+nav ul li a:hover {
+    color: #1f6196; /* Subtle hover effect */
+    background-color: aliceblue;
+}
+ul {
+    list-style: none;
+}
+
+.users {
+        background: linear-gradient(to right, #875fb2, #4e71ac);
+        display: flex;
+        border: solid #343a40 5px;
+        align-items: center;
+        padding: 10px;
+        border-radius: 5px;
+        margin: 10px 0;
+}
+.users:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+.users div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+}
+.users img{
+    
+    border-radius: 45%;
+    border: #d9534f solid 10px;
+}
+span{
+    background-color: #555;
+    border-radius: 5px;
+    padding: 8px;
+    max-width: 90px;
+    margin-right: 10px;
+}
+li:nth-child(even) .users {
+    flex-direction: row-reverse;
+  }
+.post {
+    display: flex;
+    border: solid #343a40 5px;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+  }
+  .post div {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+  }
+
+  li:nth-child(even) .post {
+    flex-direction: row-reverse;
+  }
+  .post:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+  }
+.image-post {
+    border-radius: 50%;
+}
+
+p {
+    margin: 10px 0 0;
+    line-height: 1.6;
+    font-size: 1em;
+  }
+
+  /* Style for public post content */
+ p.public {
+    background-color: #71a677;
+    padding: 10px;
+    border-left: 4px solid #020da6;
+    border-radius: 4px;
+    color: #333;
+  }
+
+  p.public:hover{
+    transform: scale(1.05);
+  }
+
+  /* Style for private post message */
+  p.private {
+    background-color: #e28484;
+    padding: 10px;
+    border-left: 4px solid #d9534f;
+    border-radius: 4px;
+    font-style: bold;
+    color: #ff0b03;
+  }
+
+  #home {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 20px auto;
+    text-align: justify;
+    animation: fadeIn 2s ease-in-out, slideInUp 1.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideInUp {
+    0% {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.2em;
+  }
+
+.item {
+    opacity: 0; 
+    transform: translateY(20px);  
+    animation: fadeIn 1s forwards;
+}
+
+/* Fade-In Animation */
+@keyframes fadeIn {
+    to {
+        opacity: 1;  /* Fully visible */
+        transform: translateY(0);  /* Move to the original position */
+    }
+}
+
+/* Delay the appearance of each post */
+.item:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.post-item:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.post-item:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+.post-item:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.post-item:nth-child(n+5) {
+    animation-delay: 1s;
+}
+
+.hero {
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+  }
+  
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .hero p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+  }
+  
+  .hero .btn {
+    padding: 15px 30px;
+    background-color: #fff;
+    color: #2575fc;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .hero .btn:hover {
+    background-color: #2575fc;
+    color: white;
+  }
+  
+  /* Features Section */
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 20px;
+    background-color: #fff;
+  }
+  
+  .feature {
+    text-align: center;
+    width: 30%;
+  }
+  
+  .feature h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+  }
+  
+  .feature p {
+    font-size: 1.1em;
+  }
+
+  h3.random-posts-header {
+    font-size: 36px; /* Larger text */
+    font-weight: bold; /* Bold text */
+    color: #333; /* Dark text color */
+    text-align: center; /* Center the header */
+    text-transform: uppercase; /* Make the text uppercase */
+    letter-spacing: 2px; /* Add spacing between letters */
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
+    -webkit-background-clip: text; /* Clip the background to the text */
+    color: transparent; /* Make the text color transparent to show the gradient */
+    padding: 20px 0; /* Add padding above and below the text */
+    margin-top: 40px; /* Space above the header */
+    border-bottom: 3px solid #ff7e5f; /* Add a bottom border with matching gradient color */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for a lifted effect */
+    font-family: 'Arial', sans-serif; /* Use a clean sans-serif font */
+  }
+  
