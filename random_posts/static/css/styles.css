@@ -55,7 +55,7 @@ ul {
         margin: 10px 0;
 }
 .users:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 8px 8px 12px rgba(0, 0, 0, 0.2);
     transform: scale(1.05);
   }
 .users div {
@@ -132,15 +132,7 @@ p {
     color: #ff0b03;
   }
 
-  #home {
-    font-size: 18px;
-    color: #555;
-    line-height: 1.6;
-    max-width: 800px;
-    margin: 20px auto;
-    text-align: justify;
-    animation: fadeIn 2s ease-in-out, slideInUp 1.5s ease-out;
-  }
+
 
   @keyframes fadeIn {
     0% {
@@ -217,22 +209,30 @@ footer {
 .post-item:nth-child(n+5) {
     animation-delay: 1s;
 }
-
+#home {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.6;
+  text-align: justify;
+  animation: fadeIn 2s ease-in-out, slideInUp 1.5s ease-out;
+}
 .hero {
     background: linear-gradient(to right, #6a11cb, #2575fc);
     color: white;
     text-align: center;
-    padding: 80px 20px;
+    margin-bottom: 40px;
+    height:auto;
+    
   }
   
   .hero-content {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
   }
   
   .hero h1 {
     font-size: 3em;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
   
   .hero p {
@@ -260,8 +260,9 @@ footer {
   .features {
     display: flex;
     justify-content: space-around;
-    padding: 60px 20px;
-    background-color: #fff;
+    background-color: #c3bebe;
+    margin-bottom: 40px;
+  
   }
   
   .feature {
@@ -279,19 +280,19 @@ footer {
   }
 
   h3.random-posts-header {
-    font-size: 36px; /* Larger text */
-    font-weight: bold; /* Bold text */
-    color: #333; /* Dark text color */
-    text-align: center; /* Center the header */
-    text-transform: uppercase; /* Make the text uppercase */
-    letter-spacing: 2px; /* Add spacing between letters */
-    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
-    -webkit-background-clip: text; /* Clip the background to the text */
-    color: transparent; /* Make the text color transparent to show the gradient */
-    padding: 20px 0; /* Add padding above and below the text */
-    margin-top: 40px; /* Space above the header */
-    border-bottom: 3px solid #ff7e5f; /* Add a bottom border with matching gradient color */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a shadow for a lifted effect */
-    font-family: 'Arial', sans-serif; /* Use a clean sans-serif font */
+    font-size: 36px;
+    font-weight: bold; 
+    color: #333; 
+    text-align: center; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: linear-gradient(to right, #ff7e5f, #feb47b); 
+    -webkit-background-clip: text; 
+    color: transparent; 
+    padding: 20px 0; 
+    margin-top: 40px; 
+    border-bottom: 3px solid #ff7e5f; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+    font-family: 'Arial', sans-serif; 
   }
   

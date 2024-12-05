@@ -1,0 +1,15 @@
+{%extends 'posts_app/base.html' %}
+{% load static %}
+{%block content%}
+<h1>Posted by {{post.user.username}}</h1>
+<h2>Date {{post.created_at}}</h2>
+<h3>This post is {{post.visibility}}</h3>
+{{post.content}} <br>
+<div>
+    {%if post.image %}
+        <img class="image-post" src="{{ post.image.url }}" alt="post" height="300" width="300">
+    {% else %}
+        <img class="image-post"src="{% static 'assets/post.jpeg'%}" alt="static post" height="300" width="300">
+    {%endif%}
+</div>
+{% endblock %}

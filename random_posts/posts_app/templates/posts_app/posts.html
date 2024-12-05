@@ -1,7 +1,6 @@
 {%extends 'posts_app/base.html' %}
 {%load static%}
 {%block content%}
-<body>
     <h1>All the Posts are here</h1>
     <ul>
         {% for post in posts %}
@@ -22,11 +21,11 @@
                 {%else%}
                 <p class="private">Conetnt : This post is private &#128274;</p>
                 {%endif%}
-            </div>
+                <a class="post-details" href="{% url 'post-details' post.pk %}">Click here to see the whole post</a>
 
+            </div>
             </div>
             </li>
         {% endfor %}
     </ul>
-</body>
 {% endblock %}

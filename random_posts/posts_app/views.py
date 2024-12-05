@@ -15,3 +15,20 @@ class PostsListView(ListView):
     template_name ="posts_app/posts.html"
     context_object_name = "posts"
 
+
+class UserDetailView(DetailView):
+    model = CustomUser
+    template_name = "posts_app/profile.html"
+    context_object_name = "user"
+    slug_field = "username"
+    slug_url_kwarg = "username"
+
+class PostDetailView(DetailView):
+    model = Post
+    template_name= "posts_app/post_details.html"
+    context_object_name = "post"
+
+class UserPostsView(DetailView):
+    pass
+
+
