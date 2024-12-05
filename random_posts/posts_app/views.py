@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from typing import Any
+from django.db.models.query import QuerySet
+from django.shortcuts import render,get_object_or_404
 from .models import CustomUser,Post
 from django.views.generic import ListView,TemplateView,DetailView
 # Create your views here.
@@ -28,7 +30,26 @@ class PostDetailView(DetailView):
     template_name= "posts_app/post_details.html"
     context_object_name = "post"
 
-class UserPostsView(DetailView):
-    pass
+class UserPostsView(ListView):
+    model = Post
+    template_name ="posts_app/user_posts.html"
+    context_object_name = "posts"
+
+    def get_queryset(self):
+        username = self.kwargs['username']
+        user = get_object_or_404(CustomUser,username=username)
+        return Post.objects.filter(user=user)
+    
+    def get_context_data(self, **kwargs: Any) :
+        context = super().get_context_data(**kwargs)
+        print(context)
+        username = self.kwargs['username']
+        user = get_object_or_404(CustomUser,username=username)
+        context['user'] = user
+        print('*'*100)
+        print(context)
+        return context
+
+    
 
 
