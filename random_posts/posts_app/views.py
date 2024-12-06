@@ -2,7 +2,9 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render,get_object_or_404
 from .models import CustomUser,Post
-from django.views.generic import ListView,TemplateView,DetailView
+from django.views.generic import ListView,TemplateView,DetailView,CreateView
+from .form import CustomUserCreationForm,PostCreationForm
+from django.urls import reverse_lazy
 # Create your views here.
 class HomePageView(TemplateView):
     template_name = "posts_app/home.html"
@@ -49,7 +51,17 @@ class UserPostsView(ListView):
         print('*'*100)
         print(context)
         return context
+    
 
+class UserRagisterView(CreateView):
+    form_class = CustomUserCreationForm
+    template_name = "posts_app/register.html"
+    success_url = reverse_lazy("home")
+
+class PostCreateView(CreateView):
+    form_class = PostCreationForm
+    template_name="posts_app/create_post.html"
+    success_url = reverse_lazy("posts-list")
     
 
 

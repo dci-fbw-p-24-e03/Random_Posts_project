@@ -1,0 +1,14 @@
+{%extends 'posts_app/base.html' %}
+{% load static %}
+
+{%block content%}
+<div class="register">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+
+{%endblock%}

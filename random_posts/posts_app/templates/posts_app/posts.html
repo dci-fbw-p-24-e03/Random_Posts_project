@@ -1,5 +1,5 @@
 {%extends 'posts_app/base.html' %}
-{%load static%}
+{% load static %}
 {%block content%}
     <h1>All the Posts are here</h1>
     <ul>
@@ -7,23 +7,23 @@
         <li class="item">
             <div class="post">
                 <div>
-                {%if post.image %}
-                    <img class="image-post" src="{{ post.image.url }}" alt="post" height="300" width="300">
-                {% else %}
-                    <img class="image-post"src="{% static 'assets/post.jpeg'%}" alt="static post" height="300" width="300">
-                {%endif%}
-            </div>
-            <div>
-                <h3>Posted by : {{post.user.username}}</h3> Created at : {{post.created_at}}
-                {%if post.visibility == 'public'%}
-                    <h4>Categories : {{post.categories}}</h4>
-                    <p class="public">Content : {{post.content}}</p>
-                {%else%}
-                <p class="private">Conetnt : This post is private &#128274;</p>
-                {%endif%}
-                <a class="post-details" href="{% url 'post-details' post.pk %}">Click here to see the whole post</a>
+                    {%if post.image %}
+                        <img class="image-post" src="{{ post.image.url }}" alt="post" height="300" width="300">
+                    {% else %}
+                        <img class="image-post"src="{% static 'assets/post.jpeg'%}" alt="static post" height="300" width="300">
+                    {%endif%}
+                    </div>
+                <div>
+                    <h3>Posted by : {{post.user.username}}</h3> Created at : {{post.created_at}}
+                    {%if post.visibility == 'public'%}
+                        <h4>Categories : {{post.categories}}</h4>
+                        <p class="public">Content : {{post.content}}</p>
+                    {%else%}
+                    <p class="private">Conetnt : This post is private &#128274;</p>
+                    {%endif%}
+                    <a class="details" href="{% url 'post-details' post.pk %}">Click here to see the whole post</a>
 
-            </div>
+                 </div>
             </div>
             </li>
         {% endfor %}

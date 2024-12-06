@@ -1,7 +1,6 @@
 {%extends 'posts_app/base.html' %}
 {% load static %}
 {%block content%}
-
     <h1>Users List</h1>
         <ul>
         {% for user in users %}
@@ -20,8 +19,8 @@
                     <br>
                     <h3> <span>Joined at : </span> {{ user.date_joined}}</h3>
                     <h3> <span>Total Posts :  </span>{{user.user_posts.count}}</h3>
+                    <a class="details" href="{% url 'user-details' user.username %}">Check {{user.username}} profile</a>
                 </div>
-                <a class="user-details" href="{% url 'user-details' user.username %}">Check {{user.username}} profile</a>
                 </div>  
                 </li> 
                 {% endfor %}
@@ -29,5 +28,4 @@
         </ul>
         
         
-
 {% endblock %}

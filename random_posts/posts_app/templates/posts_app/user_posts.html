@@ -1,5 +1,5 @@
 {%extends 'posts_app/base.html' %}
-{%load static%}
+{% load static %}
 {%block content%} 
 <h1>{{user.username}} posts</h1>
 <ul>
@@ -21,7 +21,7 @@
             {%else%}
             <p class="private">Conetnt : This post is private &#128274;</p>
             {%endif%}
-            <a class="post-details" href="{% url 'post-details' post.pk %}">Click here to see the whole post</a>
+            <a class="details" href="{% url 'post-details' post.pk %}">Click here to see the whole post</a>
 
         </div>
         </div>
