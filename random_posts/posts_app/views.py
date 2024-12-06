@@ -2,7 +2,9 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render,get_object_or_404
 from .models import CustomUser,Post
-from django.views.generic import ListView,TemplateView,DetailView,CreateView
+from django.views.generic import ListView,TemplateView,DetailView,CreateView,FormView,RedirectView
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login,logout
 from .form import CustomUserCreationForm,PostCreationForm
 from django.urls import reverse_lazy
 # Create your views here.
@@ -58,10 +60,32 @@ class UserRagisterView(CreateView):
     template_name = "posts_app/register.html"
     success_url = reverse_lazy("home")
 
+class UserLoginView(FormView):
+    form_class = AuthenticationForm
+    template_name = "posts_app/login.html"
+    success_url = reverse_lazy("home")
+
+    def form_valid(self,form):
+        user = form.get_user()
+        login(self.request,user)
+        print(self.request)
+        return super().form_valid(form)
+    
+class UserLogoutView(RedirectView):
+    url = reverse_lazy("home")
+
+    def get(self, request, *args, **kwargs):
+        logout(request)
+        print(self.request.user)
+        return super().get(request, *args, **kwargs)
+
+
 class PostCreateView(CreateView):
     form_class = PostCreationForm
     template_name="posts_app/create_post.html"
     success_url = reverse_lazy("posts-list")
     
+
+
 
 
