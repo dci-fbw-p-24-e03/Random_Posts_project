@@ -298,14 +298,14 @@ footer {
   }
   
  .details {
-    background-color: #4e71ac;
+    background-color: #b16b3d;
     color: #050505;
     font-size: 1em;
     text-decoration: none;
     transition: color 0.3s;
-    margin: 4px;
     padding: 8px;
-    border-radius: 5%;
+    border-radius: 10%;
+    display: flex;
   }
 
  .details:hover{
@@ -320,12 +320,18 @@ footer {
   padding-left: 20px;
   padding-right: 20px;
   margin-top: 20px;
-  border-radius: 5%;
+  border-radius: 10%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
+}
+#profile div:nth-child(2) {
+  display: flex;
+  justify-content: center;  /* Horizontally centers the content */
+  align-items: center;      /* Vertically centers the content */
+
 }
 
-#profile div:nth-child(2){
+#profile img {
   border-radius: 50%;
 }
 
@@ -337,4 +343,40 @@ footer {
   border-radius: 50px;
   margin: 10px 0;
   justify-content: space-evenly;
+}
+.register,.login {
+  border: #61412c solid 5px;
+  border-radius: 35px;
+  width: 100%; 
+  max-width: 400px;
+  margin: 5px auto; 
+  padding: 20px;
+  background: linear-gradient(to right, #c0cbdf,#5f4d39);
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between form elements */
+}
+
+form button {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #493e3a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%; /* Make the button the same width as the form */
+}
+form input,
+form select,
+form textarea,
+form button {
+    width: 100%; /* Ensure all form elements are the same width */
+    padding: 10px;
+    box-sizing: border-box; /* Ensures padding is included in width calculation */
+    border: 1px solid #ccc; /* Optional: Style borders for consistency */
+}
+form button:hover {
+  background-color: #45a049;
 }

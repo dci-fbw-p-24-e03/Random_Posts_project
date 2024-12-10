@@ -4,25 +4,30 @@
 
 {%block content%}
 <div id="profile">
-<div>
-<h1>Welcome to {{user.username}}'s Profile</h1>
-{% if user.first_name %}
-<h3>{{user.first_name}}</h3>
-{%endif%}
-<h3><span>Email : </span> {{user.email}}</h3> 
-<h3><span>Phone number</span>{{user.phone_number}}</h3>
-<h3><span>Sex : </span>{{user.sex}}</h3>
-<h4><span>Bio : </span> {{user.bio}}</h4>
-<h4><span>Total Posts : </span>{{user.user_posts.count}}</h4>
-<a class="details" href="{%url 'user-posts' user.username%}">Click here to see all {{user.username}} posts</a>
-</div>
-<div>
-    {% if user.sex == 'M' %}
-    <img src="{% static 'assets/male.jpeg' %}" alt="male" width="300" height="300">
-    {%else%}
-    <img src="{% static 'assets/female.jpg' %}" alt="female" width="300" height="300">
-    {% endif %}
-</div>
+    <div >
+        <h1>Welcome to {{user.username}}'s Profile</h1>
+        {% if user.first_name %}
+        <h3><span>name : </span> {{user.first_name}}</h3>
+        {%endif%}
+        <h3><span>Email : </span> {{user.email}}</h3> 
+        <h3><span>Phone number</span>{{user.phone_number}}</h3>
+        <h3><span>Sex : </span>{{user.sex}}</h3>
+        <h4><span>Bio : </span> {{user.bio}}</h4>
+        <h4><span>Total Posts : </span>{{user.user_posts.count}}</h4>
+        <a class="details" href="{%url 'user-posts' user.username%}">Click here to see all {{user.username}} posts</a><br>
+        {%if user == request.user %}
+        <a class="details" href="{%url 'new-post'%}">Post Something here</a>
+        <a class="details" href="{%url 'user-update' user.username%}">Update profile</a>
+        {%endif%}
+
+    </div>
+    <div>
+        {% if user.sex == 'M' %}
+        <img src="{% static 'assets/male.jpeg' %}" alt="male" width="300" height="300">
+        {%else%}
+        <img src="{% static 'assets/female.jpg' %}" alt="female" width="300" height="300">
+        {% endif %}
+    </div>
 </div>
 
 {%endblock%}

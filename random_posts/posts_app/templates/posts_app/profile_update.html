@@ -3,12 +3,14 @@
 
 {% load static %}
 
+
 {%block content%}
 <div class="register">
     <form method="post">
         {% csrf_token %}
         {{ form|crispy}}
-        <button type="submit">Register</button>
+        <button type="submit">Update</button>
+        <button><a href="{% url 'user-details' user.username %}">Cancel</a></button>
     </form>
 </div>
 

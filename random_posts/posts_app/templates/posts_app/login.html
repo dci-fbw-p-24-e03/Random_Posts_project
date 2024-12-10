@@ -1,12 +1,13 @@
 {%extends 'posts_app/base.html' %}
+{% load crispy_forms_tags %}
+
 {% load static %}
 
 {%block content%}
     <div class="login">
         <form method="post">
             {% csrf_token %}
-            <div>username : {{ form.username }}</div>
-            <div>password : {{ form.password }}</div>
+            {{form|crispy}}
             <button type="submit" >Login</button>
         </form>
     </div>
