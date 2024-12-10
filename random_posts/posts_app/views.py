@@ -2,7 +2,7 @@ from typing import Any
 from django.db.models.query import QuerySet
 from django.shortcuts import render,get_object_or_404,HttpResponse
 from .models import CustomUser,Post
-from django.views.generic import ListView,TemplateView,DetailView,CreateView,FormView,RedirectView,UpdateView
+from django.views.generic import ListView,TemplateView,DetailView,CreateView,FormView,RedirectView,UpdateView,DeleteView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
 from .form import CustomUserCreationForm,PostCreationForm,CustomAuthenticationForm,UserUpdateForm
@@ -120,3 +120,9 @@ class UpdatePostView(LoginRequiredMixin,UpdateView):
         return reverse_lazy("user-posts",kwargs={"username":self.object.user.username})
 
 
+class PostDeleteView(LoginRequiredMixin,DeleteView):
+    model = Post
+    template_name ="posts_app/delete_post.html"
+
+    def get_success_url(self):
+        return reverse_lazy("user-posts",kwargs={"username":self.object.user.username})

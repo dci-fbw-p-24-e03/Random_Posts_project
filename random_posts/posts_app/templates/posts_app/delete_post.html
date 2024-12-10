@@ -1,0 +1,11 @@
+{%extends 'posts_app/base.html' %}
+{% load static %}
+{%block content%}
+<h1>Delete Post ?</h1>
+<h3>Are you sure you want to delete this Post ?</h3>
+<form method="post">
+    {%csrf_token%}
+    <button type="submit"> Confirm Delete</button>
+    <a class="details" href="{%url 'user-posts' post.user.username%}">Go back</a>
+</form>
+{% endblock %}

@@ -7,6 +7,10 @@
         <h2>Date {{post.created_at}}</h2>
         <h3>This post is {{post.visibility}}</h3>
         {{post.content}} <br>
+        {%if post.user == request.user %}
+        <a class="details" href="{%url 'post-update' post.pk%}">Update this post</a>
+        <a class="details" href="{%url 'post-delete' post.pk%}">Delete this post</a>
+        {%endif %}
     </div>
     <div>
         {%if post.image %}
@@ -15,10 +19,6 @@
             <img class="image-post"src="{% static 'assets/post.jpeg'%}" alt="static post" height="300" width="300">
         {%endif%}
     </div>
-    <div>
-        {%if post.user == request.user %}
-        <a href="{%url 'post-update' post.pk%}">Update this post</a>
-        {%endif %}
-    </div>
+    
 </div>
 {% endblock %}

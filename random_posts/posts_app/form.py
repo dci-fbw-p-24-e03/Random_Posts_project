@@ -66,3 +66,8 @@ class UserUpdateForm(UserChangeForm):
     class Meta:
         model = CustomUser
         fields = ["username","first_name","last_name","email","age","sex","phone_number","bio"]
+
+
+class SearchForm(forms.Form):
+    category = forms.CharField()
+    user = forms.CharField()
