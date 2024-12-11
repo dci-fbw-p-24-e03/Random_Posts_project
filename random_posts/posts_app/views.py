@@ -114,10 +114,15 @@ class UserUpdateView(LoginRequiredMixin,UpdateView):
 class UpdatePostView(LoginRequiredMixin,UpdateView):
     model = Post
     form_class = PostCreationForm
-    template_name = "posts_app/create_post.html"
+    template_name = "posts_app/update_post.html"
 
     def get_success_url(self):
-        return reverse_lazy("user-posts",kwargs={"username":self.object.user.username})
+        return reverse_lazy("user-posts",kwargs={"username":self.request.user.username})
+    
+    def form_valid(self, form):
+        print(form.errors)
+        form.instance.user=self.request.user
+        return super().form_valid(form)
 
 
 class PostDeleteView(LoginRequiredMixin,DeleteView):

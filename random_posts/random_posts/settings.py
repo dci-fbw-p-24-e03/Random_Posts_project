@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "posts_app",
     "crispy_forms",
     'crispy_bootstrap5',
+    "django_extensions"
 
 ]
 

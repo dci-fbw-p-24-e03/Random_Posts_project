@@ -1,0 +1,16 @@
+{%extends 'posts_app/base.html' %}
+{% load static %}
+
+{%block content%}
+<div class="register">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <button type="submit">Update Post</button>
+        <a class="details" href="{%url 'user-posts' post.user.username%}">Go back</a>
+
+    </form>
+</div>
+
+
+{%endblock%}
