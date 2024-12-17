@@ -152,3 +152,50 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR,'static')]
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 
+LOGGING = {
+    "version":1,
+     'disable_existing_loggers': False,
+     "formatters":{
+         "verbose":{
+            'format': '{levelname} {asctime} {module} {message}',
+            'style': '{',
+         },
+         "simple":{
+              'format': '{asctime} {levelname}  {message}',
+            'style': '{',
+             
+         }
+     },
+     'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+        },
+        'file': {
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'info_log','info.log'),
+            'formatter': 'verbose',
+        },
+         'file_app': {
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'info_log','info_app.log'),
+            'formatter': 'verbose',
+        },
+    },
+     "loggers":{
+         "django":{
+             "handlers":["console","file"],
+             "level":"INFO",
+             "propagate":True
+         },
+         "posts_app":{
+             "handlers":["console","file_app"],
+             "level":"INFO",
+             "propagate":True#set it to false if you want only the info logger to be called
+         }
+         
+     }
+
+
+}
+

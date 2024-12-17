@@ -9,9 +9,15 @@ from .form import CustomUserCreationForm,PostCreationForm,CustomAuthenticationFo
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseForbidden,HttpResponseNotFound
+import logging
+
+logger= logging.getLogger("posts_app")
 
 class HomePageView(TemplateView):
     template_name = "posts_app/home.html"
+    def get(self, request, *args, **kwargs):
+        logger.info(f"The home page is visited by {request.user}")
+        return super().get(request, *args, **kwargs)
 
 class ErrorPage(TemplateView):
     template_name = "posts_app/error_page.html" 
@@ -64,6 +70,9 @@ class UserRagisterView(CreateView):
     form_class = CustomUserCreationForm
     template_name = "posts_app/register.html"
     success_url = reverse_lazy("home")
+    def post(self, request, *args, **kwargs):
+        logger.info(f"total users {CustomUser.objects.count()}")
+        return super().post(request, *args, **kwargs)
 
 class UserLoginView(FormView):
     form_class = CustomAuthenticationForm
@@ -75,6 +84,7 @@ class UserLoginView(FormView):
             user = form.get_user()
             if user:  # Ensure the user exists
                 login(self.request, user)
+                logger.info(f"{user.username} logged in")
         else:
             return self.form_invalid(form)  # Treat as invalid if empty data is present
         return super().form_valid(form)
@@ -85,7 +95,7 @@ class UserLogoutView(LoginRequiredMixin,RedirectView):
 
     def get(self, request, *args, **kwargs):
         logout(request)
-        print(self.request.user)
+        logger.warning(f"{request.user.username} logged out")
         return super().get(request, *args, **kwargs)
 
 

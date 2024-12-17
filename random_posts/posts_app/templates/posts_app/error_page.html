@@ -1,23 +1,15 @@
 {%extends 'posts_app/base.html' %}
 
 {% load static %}
-
 {% block content %}
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error - Page Not Found</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<div id="body">
     <style>
-        body {
+        #body    {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
-            background: linear-gradient(to right, #f5f7fa, #c3cfe2);
-            margin: 0;
-            padding: 0;
-            height: 100vh;
+            background: linear-gradient(to right, #e91d16, #dd8e35);
+            padding-left: 25%;
+            padding-right: 25%;
+            height: 50vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -28,7 +20,7 @@
             border-radius: 10px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            max-width: 400px;
+            max-width: 600px;
             margin: 0 auto;
         }
         .error-container h1 {
@@ -65,8 +57,7 @@
             margin-bottom: 20px;
         }
     </style>
-</head>
-<body>
+
 
 <div class="error-container">
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmWru8q17zpOzzzT1s475ZS_8fOL1GS0teSw&s" alt="Error Image" class="error-image">
@@ -76,8 +67,8 @@
     <a href="{% url 'home' %}">Go Back to Home</a>
 </div>
 
-</body>
-</html>
-
+</div>
 {% endblock %}
+
+
 

@@ -4,7 +4,9 @@ from django.contrib.auth.models import AbstractUser
 from django.utils import timezone
 from .validators import validate_email,validate_username,validate_no_bad_words,validate_age,validate_post_length
 from PIL import Image
+import logging
 
+logger= logging.getLogger("posts_app")
 class CustomUser(AbstractUser):
     SEX_CHOICES = [
         ("M","Male"),
@@ -26,8 +28,10 @@ class CustomUser(AbstractUser):
             self.first_name = self.first_name.capitalize()
         if self.last_name:
             self.last_name = self.last_name.capitalize()
+
+        logger.info(f"Saving {self.username} with {self.password}")
         super().save(*args,**kwargs)
-        
+    
 
     def clean(self) -> None:
         super().clean()
