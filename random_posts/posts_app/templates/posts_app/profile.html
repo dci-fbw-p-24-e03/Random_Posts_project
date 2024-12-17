@@ -18,6 +18,9 @@
         {%if user == request.user %}
         <a class="details" href="{%url 'new-post'%}">Post Something here</a>
         <a class="details" href="{%url 'user-update' user.username%}">Update profile</a>
+        <a class="details" href="{%url 'delete-account' user.username%}">Delete profile</a>
+
+
         {%endif%}
 
     </div>

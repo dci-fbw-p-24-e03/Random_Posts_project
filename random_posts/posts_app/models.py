@@ -10,7 +10,7 @@ class CustomUser(AbstractUser):
         ("M","Male"),
         ("F","Female")
     ]
-    phone_number = models.CharField(max_length=20,blank=True,null=True)
+    phone_number = models.CharField(max_length=40,blank=True,null=True)
     age = models.PositiveBigIntegerField(blank=True,null=True,validators=[validate_age])
     bio = models.TextField(blank=True,validators=[validate_no_bad_words])
     email=models.EmailField(unique=True,validators=[validate_email])

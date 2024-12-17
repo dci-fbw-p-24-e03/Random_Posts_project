@@ -68,6 +68,8 @@ class UserUpdateForm(UserChangeForm):
         fields = ["username","first_name","last_name","email","age","sex","phone_number","bio"]
 
 
-class SearchForm(forms.Form):
-    category = forms.CharField()
-    user = forms.CharField()
+class PasswordConfirmationForm(forms.Form):
+    password = forms.CharField(
+        widget=forms.PasswordInput(attrs={'class': 'form-control', 'placeholder': 'Enter your password'}),
+        label="Password"
+    )

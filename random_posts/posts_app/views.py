@@ -1,16 +1,20 @@
 from typing import Any
 from django.db.models.query import QuerySet
-from django.shortcuts import render,get_object_or_404,HttpResponse
+from django.shortcuts import render,get_object_or_404,HttpResponse,redirect
 from .models import CustomUser,Post
 from django.views.generic import ListView,TemplateView,DetailView,CreateView,FormView,RedirectView,UpdateView,DeleteView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login,logout,authenticate
-from .form import CustomUserCreationForm,PostCreationForm,CustomAuthenticationForm,UserUpdateForm
+from .form import CustomUserCreationForm,PostCreationForm,CustomAuthenticationForm,UserUpdateForm,PasswordConfirmationForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-# Create your views here.
+from django.http import HttpResponseForbidden,HttpResponseNotFound
+
 class HomePageView(TemplateView):
     template_name = "posts_app/home.html"
+
+class ErrorPage(TemplateView):
+    template_name = "posts_app/error_page.html" 
 
 class UsersListView(ListView):
     model = CustomUser
@@ -125,6 +129,41 @@ class UpdatePostView(LoginRequiredMixin,UpdateView):
         return super().form_valid(form)
 
 
+class CustomUserDeleteView(DeleteView):
+    model = CustomUser
+    template_name = 'posts_app/user_confirm_delete.html'  # Replace with your template path
+    success_url = reverse_lazy('home')  # Redirect after successful delete
+
+    def get_object(self, queryset=None):
+        # Ensure the user can only delete their own account
+        return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if 'password_form' not in context:
+            context['password_form'] = PasswordConfirmationForm()
+        return context
+
+    def post(self, request, *args, **kwargs):
+        user = self.get_object()
+        form = PasswordConfirmationForm(request.POST)
+
+        if form.is_valid():
+            password = form.cleaned_data['password']
+
+            # Check if the password matches the user's password
+            if user.check_password(password):
+                # If password is correct, delete the user and log them out
+                user.delete()
+                logout(request)
+                return redirect(self.success_url)
+            else:
+                # If password is incorrect, return forbidden
+                return HttpResponseForbidden("Password is incorrect.")
+        else:
+            # If form is invalid, re-render the page with errors
+            return self.render_to_response(self.get_context_data(password_form=form))
+        
 class PostDeleteView(LoginRequiredMixin,DeleteView):
     model = Post
     template_name ="posts_app/delete_post.html"

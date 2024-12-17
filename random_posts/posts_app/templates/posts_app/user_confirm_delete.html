@@ -1,0 +1,12 @@
+{% extends 'posts_app/base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+{% block content %}
+  <h2>Are you sure you want to delete your account?</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ password_form.as_p }}
+    <button type="submit">Confirm Delete</button>
+  </form>
+{% endblock %}
