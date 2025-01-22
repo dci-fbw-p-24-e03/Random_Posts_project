@@ -6,7 +6,6 @@ django-extensions==3.2.3
 Faker==33.1.0
 pillow==11.0.0
 psycopg2-binary==2.9.10
-pygraphviz==1.14
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 six==1.17.0
