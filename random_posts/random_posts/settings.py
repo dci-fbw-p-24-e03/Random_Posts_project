@@ -161,9 +161,11 @@ if not os.path.exists(LOG_DIR):
     os.mkdir(LOG_DIR)
 
 if not os.path.exists(LOG_PATH):
-    f = open(LOG_PATH, "a").close()  # create empty log file
+    with open(LOG_PATH, "a") as f:
+        pass # create empty log file
 else:
-    f = open(LOG_PATH, "w").close()  # clear log file
+    with open(LOG_PATH, "w") as f:  # clear log file
+        f.write("")
 
 LOGGING = {
     "version":1,
