@@ -1,9 +1,14 @@
-from django.test import TestCase
+from django.test import TestCase,override_settings
+import tempfile
 from posts_app.models import CustomUser,Post
 from django.core.exceptions import ValidationError
 from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 import os
+@override_settings(
+    STATIC_ROOT=tempfile.mkdtemp(),
+    MEDIA_ROOT=tempfile.mkdtemp(),
+)
 class CustomUserModelTest(TestCase):
     def setUp(self):
         self.user = CustomUser.objects.create_user(
