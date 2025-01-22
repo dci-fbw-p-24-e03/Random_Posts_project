@@ -33,7 +33,7 @@ jobs:
 
       - name: Collect the static files
         run: |
-          python random_posts/manage.py collecstatic --noinput
+          python random_posts/manage.py collectstatic --noinput
 
       - name: Run Custom Commands
         run: |
