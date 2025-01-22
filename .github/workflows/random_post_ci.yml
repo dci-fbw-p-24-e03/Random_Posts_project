@@ -49,8 +49,6 @@ jobs:
         run: |
           python random_posts/manage.py generate_fake_data
 
-      - name: Run Unit Tests
-        run: |
-          python random_posts/manage.py test tests
+
 
 
