@@ -45,7 +45,10 @@ class CustomUserModelTest(TestCase):
         users = list(CustomUser.objects.all())
         self.assertEqual(users[0].username,"anotheruser")
         self.assertEqual(users[1].username,"testuser")
-
+@override_settings(
+    STATIC_ROOT=tempfile.mkdtemp(),
+    MEDIA_ROOT=tempfile.mkdtemp(),
+)
 class PostModelTest(TestCase):
     def setUp(self):
         self.user = CustomUser.objects.create_user(
