@@ -51,6 +51,6 @@ jobs:
 
       - name: Run Unit Tests
         run: |
-          python random_posts/manage.py test tests
+          python random_posts/manage.py test random_posts/tests
 
 
