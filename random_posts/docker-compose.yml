@@ -1,0 +1,39 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_DB=random_posts
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "postgres", "-d", "random_posts"]
+      interval: 10s
+      retries: 5
+      start_period: 30s
+      timeout: 10s
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "python3 manage.py migrate && python3 manage.py generate_fake_data && python3 manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DEBUG=1
+      - DJANGO_SETTINGS_MODULE=random_posts.settings
+      - DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,[::1],db
+
+volumes:
+  pgdata:
