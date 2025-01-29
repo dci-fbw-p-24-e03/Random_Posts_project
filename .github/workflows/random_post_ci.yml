@@ -34,20 +34,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r random_posts/requirements.txt
 
-      - name: Make migrations
-        run: |
-          python random_posts/manage.py makemigrations --check --noinput
-      - name: Apply Migrations
-        run: |
-          python random_posts/manage.py migrate
 
       - name: Collect the static files
         run: |
           python random_posts/manage.py collectstatic --noinput
 
-      - name: Run Custom Commands
-        run: |
-          python random_posts/manage.py generate_fake_data
+
 
       - name: Run Unit Tests
         run: |

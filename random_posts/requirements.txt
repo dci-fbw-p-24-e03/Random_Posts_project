@@ -4,6 +4,8 @@ Django
 django-crispy-forms==2.3
 django-extensions==3.2.3
 Faker==33.1.0
+gunicorn==23.0.0
+packaging==24.2
 pillow==11.0.0
 psycopg2-binary==2.9.10
 python-dateutil==2.9.0.post0

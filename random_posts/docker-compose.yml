@@ -17,12 +17,23 @@ services:
       retries: 5
       start_period: 30s
       timeout: 10s
+  
+  nginx:
+      image: nginx:latest
+      ports:
+        - "80:80"
+      volumes:
+        - ./nginx.conf:/etc/nginx/conf.d/default.conf
+        - ./static:/app/static
+        - ./media:/app/media
+      depends_on:
+        - web
 
   web:
     build:
       context: .
       dockerfile: Dockerfile
-    command: bash -c "python3 manage.py migrate && python3 manage.py generate_fake_data && python3 manage.py runserver 0.0.0.0:8000"
+    command: bash -c "python3 manage.py migrate && python3 manage.py generate_fake_data && gunicorn --bind 0.0.0.0:8000 random_posts.wsgi:application"
     ports:
       - "8000:8000"
     volumes:
@@ -37,3 +48,4 @@ services:
 
 volumes:
   pgdata:
+
